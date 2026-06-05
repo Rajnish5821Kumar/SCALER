@@ -1,0 +1,309 @@
+.main {
+  min-height: 100vh;
+  position: relative;
+  overflow: hidden;
+  padding: 0 1.5rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.bgGradient {
+  position: fixed;
+  inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, hsl(262, 40%, 12%) 0%, hsl(230, 25%, 7%) 50%),
+              radial-gradient(ellipse at 80% 20%, hsl(189, 40%, 8%) 0%, transparent 50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+.bgGrid {
+  position: fixed;
+  inset: 0;
+  background-image: linear-gradient(rgba(255,255,255,0.03) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(255,255,255,0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* ─── Hero ────────────────────────────────────────────────────── */
+.hero {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  width: 100%;
+  text-align: center;
+  padding-top: 100px;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 6px 16px;
+  background: rgba(139, 92, 246, 0.15);
+  border: 1px solid rgba(139, 92, 246, 0.3);
+  border-radius: 999px;
+  font-size: 0.8rem;
+  color: hsl(262, 83%, 74%);
+  margin-bottom: 28px;
+  letter-spacing: 0.03em;
+  font-weight: 500;
+}
+
+.badgeDot {
+  width: 8px;
+  height: 8px;
+  background: #22c55e;
+  border-radius: 50%;
+  box-shadow: 0 0 8px #22c55e;
+  animation: pulse-dot 2s infinite;
+}
+
+.heroTitle {
+  font-size: clamp(2.5rem, 6vw, 4rem);
+  font-weight: 800;
+  line-height: 1.1;
+  color: hsl(220, 20%, 95%);
+  margin-bottom: 16px;
+  letter-spacing: -0.02em;
+}
+
+.gradientText {
+  background: linear-gradient(135deg, hsl(262, 83%, 74%), hsl(189, 94%, 58%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSub {
+  font-size: 1.05rem;
+  color: hsl(220, 10%, 65%);
+  margin-bottom: 20px;
+  font-weight: 500;
+}
+
+.heroDesc {
+  font-size: 1rem;
+  color: hsl(220, 8%, 55%);
+  line-height: 1.8;
+  max-width: 580px;
+  margin: 0 auto 36px;
+}
+
+.heroCta {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 48px;
+}
+
+.btnPrimary {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: linear-gradient(135deg, hsl(262, 83%, 58%), hsl(189, 94%, 43%));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  text-decoration: none;
+  transition: opacity 0.2s, transform 0.15s;
+  box-shadow: 0 4px 20px rgba(139, 92, 246, 0.35);
+}
+
+.btnPrimary:hover {
+  opacity: 0.9;
+  transform: translateY(-2px);
+}
+
+.btnGhost {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 24px;
+  background: rgba(255, 255, 255, 0.04);
+  color: hsl(220, 10%, 65%);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  font-size: 0.95rem;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.btnGhost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: hsl(220, 20%, 95%);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+/* ─── Quick Questions ─────────────────────────────────────────── */
+.quickQuestions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+}
+
+.quickLabel {
+  font-size: 0.8rem;
+  color: hsl(220, 8%, 45%);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.quickChips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: center;
+}
+
+.chip {
+  padding: 6px 14px;
+  background: rgba(139, 92, 246, 0.1);
+  border: 1px solid rgba(139, 92, 246, 0.2);
+  border-radius: 999px;
+  color: hsl(262, 83%, 74%);
+  font-size: 0.82rem;
+  cursor: pointer;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+
+.chip:hover {
+  background: rgba(139, 92, 246, 0.2);
+  border-color: rgba(139, 92, 246, 0.4);
+}
+
+/* ─── Skills ──────────────────────────────────────────────────── */
+.skillsSection {
+  position: relative;
+  z-index: 1;
+  max-width: 760px;
+  width: 100%;
+  margin-top: 80px;
+  text-align: center;
+}
+
+.sectionTitle {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: hsl(220, 20%, 95%);
+  margin-bottom: 32px;
+}
+
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+  gap: 12px;
+}
+
+.skillCard {
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  cursor: default;
+  transition: all 0.25s ease;
+}
+
+.skillCard:hover {
+  background: rgba(255, 255, 255, 0.07);
+  transform: translateY(-2px);
+}
+
+.skillIcon {
+  font-size: 1.8rem;
+}
+
+.skillName {
+  font-size: 0.82rem;
+  color: hsl(220, 10%, 65%);
+  font-weight: 500;
+  text-align: center;
+}
+
+/* ─── Stats ───────────────────────────────────────────────────── */
+.statsSection {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  gap: 16px;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 760px;
+  width: 100%;
+  margin-top: 60px;
+}
+
+.statCard {
+  padding: 20px 32px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 12px;
+  text-align: center;
+  flex: 1;
+  min-width: 140px;
+}
+
+.statValue {
+  font-size: 2rem;
+  font-weight: 800;
+  background: linear-gradient(135deg, hsl(262, 83%, 74%), hsl(189, 94%, 58%));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.statLabel {
+  font-size: 0.8rem;
+  color: hsl(220, 8%, 50%);
+  margin-top: 4px;
+  font-weight: 500;
+}
+
+/* ─── Footer ──────────────────────────────────────────────────── */
+.footer {
+  position: relative;
+  z-index: 1;
+  margin-top: 80px;
+  padding: 32px 0 48px;
+  text-align: center;
+  color: hsl(220, 8%, 40%);
+  font-size: 0.85rem;
+  width: 100%;
+}
+
+.footer a {
+  color: hsl(262, 83%, 74%);
+  text-decoration: none;
+}
+
+.footer a:hover {
+  text-decoration: underline;
+}
+
+/* ─── Animations ──────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse-dot {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}

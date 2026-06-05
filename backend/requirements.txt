@@ -1,0 +1,32 @@
+# Minimal requirements — runs the FastAPI demo on Python 3.13
+# Version pins removed where they cause conflicts — let pip resolve
+
+fastapi>=0.115.0
+uvicorn[standard]>=0.30.0
+pydantic>=2.7.0
+pydantic-settings>=2.3.0
+
+# OpenAI (LLM + embeddings)
+openai>=1.35.0
+
+# Pinecone (vector DB)
+pinecone>=3.0.0
+
+# HTTP client (let pip resolve compatible version)
+httpx>=0.23.0
+
+# Google Calendar
+google-auth>=2.20.0
+google-auth-oauthlib>=1.0.0
+google-auth-httplib2>=0.1.0
+google-api-python-client>=2.100.0
+
+# Utilities
+python-multipart>=0.0.9
+pytz>=2024.1
+python-dateutil>=2.9.0
+aiofiles>=23.2.0
+python-dotenv>=1.0.0
+
+# Redis
+redis[asyncio]>=4.6.0
