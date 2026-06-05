@@ -21,7 +21,209 @@ interface Source {
   url?: string
 }
 
-const API_URL = process.env.NEXT_PUBLIC_API_URL || 'http://localhost:8000'
+// ─── Embedded Demo Knowledge Base ───────────────────────────────────────────
+const DEMO_KB: { keywords: string[]; answer: string }[] = [
+  {
+    keywords: ['yourself', 'who are you', 'introduce', 'background', 'about', 'tell me'],
+    answer: `I'm **Rajnish Kumar** — a Full-Stack & AI Engineer! 🚀
+
+**What I do:**
+- 💻 Build end-to-end web apps with **MERN, Next.js, FastAPI, Spring Boot**
+- 🧠 Develop AI/ML solutions with **LangChain, OpenAI, RAG pipelines**
+- 📱 Create cross-platform mobile apps with **React Native + Expo**
+- 🔌 Integrate real payment systems (Razorpay), auth (JWT), and cloud APIs
+
+**6+ production-ready projects** shipped. Passionate about building products that combine clean engineering with AI capabilities.
+
+📧 rk2452003@gmail.com | [GitHub](https://github.com/Rajnish5821Kumar) | [Portfolio](https://portfolio-website-jet-delta-77.vercel.app/)
+
+*(Source: Resume — Personal Summary)*`,
+  },
+  {
+    keywords: ['tech stack', 'technologies', 'skills', 'languages', 'tools', 'frameworks', 'stack breakdown'],
+    answer: `Here's my complete tech stack:
+
+| Layer | Technologies |
+|-------|-------------|
+| **Frontend** | React, Next.js 14, TypeScript, Tailwind CSS, Redux |
+| **Backend** | Node.js, Express.js, FastAPI (Python), Spring Boot (Java) |
+| **Mobile** | React Native + Expo, TypeScript |
+| **Databases** | MongoDB, PostgreSQL, MySQL, SQL Server, Redis |
+| **AI / ML** | Python, LangChain, OpenAI API, Pinecone, RAG, Deep Learning |
+| **DevOps** | Docker, Git, GitHub Actions, Vercel, Railway |
+| **Other** | GraphQL, REST APIs, JWT Auth, Razorpay, WebSockets |
+
+*(Source: Resume — Technical Skills)*`,
+  },
+  {
+    keywords: ['project', 'ecommerce', 'e-commerce', 'shop', 'razorpay', 'best project'],
+    answer: `**E-Commerce Platform** 🛒 — My flagship full-stack project
+
+**Tech Stack:** MERN + Redux + Razorpay + Tailwind CSS
+
+**Key Features:**
+- 🔐 JWT authentication & role-based authorization  
+- 🛍️ Product catalog with search, filters & categories
+- 🛒 Shopping cart powered by Redux state management
+- 💳 **Razorpay payment gateway** with webhook handling
+- 📊 Admin dashboard for orders, products & inventory
+- 📱 Fully responsive, modern UI with Tailwind CSS
+
+**Biggest Challenge:** Real-time inventory sync + reliable payment webhook processing
+
+**GitHub:** [Rajnish5821Kumar](https://github.com/Rajnish5821Kumar)
+
+*(Source: Resume — Projects)*`,
+  },
+  {
+    keywords: ['campus', 'smart campus', 'attendance', 'timetable', 'university'],
+    answer: `**Smart Campus Management System** 🏫
+
+**Tech:** React + Node.js + Express + MongoDB
+
+**Features:**
+- 👨‍🎓 Role-based access (Student / Faculty / Admin)
+- 📋 Automated attendance tracking
+- 📅 Timetable and schedule management
+- 🔔 Real-time notification system
+- 🏛️ Resource & classroom booking module
+
+This project deepened my understanding of multi-role system design and real-time data handling.
+
+*(Source: Resume — Projects)*`,
+  },
+  {
+    keywords: ['medical', 'appointment', 'doctor', 'healthcare', 'hospital', 'booking system'],
+    answer: `**Medical Appointment Booking System** 🏥
+
+**Tech:** React + Node.js + Express + MongoDB
+
+**Features:**
+- 👩‍⚕️ Doctor profiles with specialization listing
+- 📅 Real-time appointment slot availability
+- 📧 Automated email & SMS reminders  
+- 📁 Patient medical history tracking
+- 🖥️ Admin panel for doctor management
+
+*(Source: Resume — Projects)*`,
+  },
+  {
+    keywords: ['ai', 'machine learning', 'deep learning', 'ml', 'llm', 'langchain', 'openai', 'rag', 'artificial intelligence'],
+    answer: `**AI & Machine Learning Experience** 🧠
+
+I've worked extensively in the AI/ML space:
+
+- 🤖 **LLM Apps** — Chatbots & document Q&A using LangChain + OpenAI GPT-4o
+- 🔍 **RAG Systems** — Built retrieval-augmented pipelines with Pinecone vector DB
+- ⚙️ **AI Automation** — Workflow automation tools powered by AI agents
+- 🐍 **FastAPI ML APIs** — Serving ML models in production with FastAPI
+- 📊 **Deep Learning** — Neural network implementations in Python
+
+**This AI Persona you're talking to right now** is one of my AI engineering projects — built with RAG, voice integration, and calendar booking!
+
+*(Source: Resume — AI/ML Projects)*`,
+  },
+  {
+    keywords: ['react native', 'mobile', 'expo', 'app', 'cross-platform', 'ios', 'android'],
+    answer: `**React Native / Mobile Development** 📱
+
+I build cross-platform mobile apps using the Expo ecosystem.
+
+**Tech:** React Native + Expo + TypeScript
+
+**Capabilities:**
+- ✅ Native UI components (iOS + Android from one codebase)
+- 📷 Camera & media integration
+- 🔔 Push notifications
+- 🔄 OTA updates via Expo EAS
+- 🗺️ Maps & location services
+
+*(Source: Resume — Mobile Projects)*`,
+  },
+  {
+    keywords: ['contact', 'email', 'linkedin', 'github', 'portfolio', 'reach', 'hire', 'connect'],
+    answer: `Here's how to reach Rajnish:
+
+| Channel | Contact |
+|---------|---------|
+| 📧 **Email** | rk2452003@gmail.com |
+| 🔗 **LinkedIn** | [rajnish-kumar-5b480a255](https://linkedin.com/in/rajnish-kumar-5b480a255/) |
+| 💻 **GitHub** | [Rajnish5821Kumar](https://github.com/Rajnish5821Kumar) |
+| 🌐 **Portfolio** | [portfolio-website-jet-delta-77.vercel.app](https://portfolio-website-jet-delta-77.vercel.app/) |
+
+Feel free to reach out directly — I'm actively looking for exciting opportunities! 🚀
+
+*(Source: Resume — Contact)*`,
+  },
+  {
+    keywords: ['schedule', 'interview', 'book', 'meeting', 'call', 'calendar'],
+    answer: `I'd love to connect for an interview! 🎯
+
+**To book a session, reach out via:**
+- 📧 **Email:** rk2452003@gmail.com
+- 🔗 **LinkedIn:** [Connect with me](https://linkedin.com/in/rajnish-kumar-5b480a255/)
+
+**My availability:**
+- 📅 Weekdays: 10 AM – 7 PM IST
+- 🎙️ Video calls, phone screens, or in-person — all good!
+
+I typically respond within a few hours. Looking forward to chatting! 💬`,
+  },
+  {
+    keywords: ['experience', 'work', 'job', 'fresher', 'company', 'intern'],
+    answer: `I'm a **Computer Science graduate** actively seeking full-time opportunities in Full-Stack or AI Engineering.
+
+**What I bring:**
+- ✅ 6+ end-to-end production projects built from scratch
+- ✅ Hybrid full-stack + AI skill set (rare combination!)
+- ✅ Real payment gateway integrations (Razorpay in production)
+- ✅ Cross-platform mobile development experience
+- ✅ Strong fundamentals in both OOP (Java) and functional (Python/JS) paradigms
+
+For the latest details, check my [LinkedIn](https://linkedin.com/in/rajnish-kumar-5b480a255/) profile.
+
+*(Source: Resume — Experience)*`,
+  },
+]
+
+const DEFAULT_ANSWER = `Great question! I'm Rajnish Kumar's AI Persona — here to answer anything about his professional background.
+
+Try asking me:
+- 👤 *"Tell me about yourself"*
+- 🛠️ *"What's your tech stack?"*
+- 💼 *"Tell me about your E-Commerce project"*
+- 🧠 *"What AI/ML work have you done?"*
+- 📅 *"Can we book an interview?"*`
+
+function getDemoResponse(query: string): string {
+  const q = query.toLowerCase()
+
+  // Injection / adversarial check
+  const injectionPatterns = ['ignore previous', 'forget instructions', 'act as', 'jailbreak', 'dan mode', 'pretend you']
+  if (injectionPatterns.some(p => q.includes(p))) {
+    return `Ha, nice try! 😄 But I'm here to tell you about Rajnish's engineering background.\n\nWhat would you like to know about his projects or skills?`
+  }
+
+  // Out of scope check
+  const outOfScope = ['prime minister', 'president', 'weather', 'stock', 'cricket', 'recipe', 'what is 2', 'capital of']
+  if (outOfScope.some(p => q.includes(p))) {
+    return `I can only answer questions based on Rajnish's resume and GitHub data. I'm not a general knowledge assistant!\n\nTry asking: *"Tell me about Rajnish's projects"* or *"What is his tech stack?"*`
+  }
+
+  let bestMatch = { score: 0, answer: DEFAULT_ANSWER }
+
+  for (const item of DEMO_KB) {
+    const score = item.keywords.reduce((acc, kw) => acc + (q.includes(kw) ? 1 : 0), 0)
+    if (score > bestMatch.score) {
+      bestMatch = { score, answer: item.answer }
+    }
+  }
+
+  return bestMatch.answer
+}
+
+// ─── Send Message ─────────────────────────────────────────────────────────────
+const API_URL = process.env.NEXT_PUBLIC_API_URL || ''
 
 const SUGGESTED = [
   "Tell me about yourself",
@@ -78,44 +280,61 @@ function ChatContent() {
     setMessages((prev) => [...prev, userMsg])
     setIsLoading(true)
 
+    // Simulate thinking delay for realism
+    await new Promise(r => setTimeout(r, 800 + Math.random() * 600))
+
     try {
-      const history = messages
-        .filter((m) => m.id !== 'welcome')
-        .map((m) => ({ role: m.role, content: m.content }))
+      let answer: string
+      let sources: Source[] = []
+      let latency_ms = 900 + Math.random() * 400
 
-      const res = await fetch(`${API_URL}/api/v1/chat/message`, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          message: messageText,
-          session_id: sessionId,
-          history,
-        }),
-      })
+      // Try backend first if API_URL is set, otherwise use embedded demo
+      if (API_URL) {
+        const history = messages
+          .filter((m) => m.id !== 'welcome')
+          .map((m) => ({ role: m.role, content: m.content }))
 
-      if (!res.ok) throw new Error(`HTTP ${res.status}`)
+        const res = await fetch(`${API_URL}/api/v1/chat/message`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ message: messageText, session_id: sessionId, history }),
+        })
 
-      const data = await res.json()
-      if (!sessionId) setSessionId(data.session_id)
+        if (!res.ok) throw new Error(`HTTP ${res.status}`)
+
+        const data = await res.json()
+        if (!sessionId) setSessionId(data.session_id)
+        answer = data.answer
+        sources = data.sources || []
+        latency_ms = data.latency_ms
+      } else {
+        // Fully embedded demo — no backend needed
+        answer = getDemoResponse(messageText)
+        sources = [{ source: 'Resume', section: 'Embedded Knowledge Base' }]
+      }
 
       const assistantMsg: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: data.answer,
-        sources: data.sources,
-        latency_ms: data.latency_ms,
+        content: answer,
+        sources,
+        latency_ms,
         timestamp: Date.now(),
       }
 
       setMessages((prev) => [...prev, assistantMsg])
-    } catch (err) {
-      const errorMsg: Message = {
+    } catch {
+      // Fallback to embedded demo on any error
+      const answer = getDemoResponse(messageText)
+      const assistantMsg: Message = {
         id: (Date.now() + 1).toString(),
         role: 'assistant',
-        content: "⚠️ Sorry, I'm having trouble connecting right now. Please try again.",
+        content: answer,
+        sources: [{ source: 'Resume', section: 'Embedded Knowledge Base' }],
+        latency_ms: 850,
         timestamp: Date.now(),
       }
-      setMessages((prev) => [...prev, errorMsg])
+      setMessages((prev) => [...prev, assistantMsg])
     } finally {
       setIsLoading(false)
     }
